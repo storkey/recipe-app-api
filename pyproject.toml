@@ -1,0 +1,15 @@
+# pyproject-flake8
+[tool.flake8]
+exclude = [
+    "migrations",
+    "__pycache__",
+    "manage.py",
+    "settings.py"
+]
+max-line-length = 88
+extend-ignore = ["E203"]
+
+# pytest-django
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "app.settings"
+python_files = ["test_*.py"]
