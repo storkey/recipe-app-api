@@ -12,4 +12,3 @@ exclude = [
     "manage.py",
     "settings.py"
 ]
-ignore = ["E203"]
