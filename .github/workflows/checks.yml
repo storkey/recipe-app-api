@@ -21,4 +21,4 @@ jobs:
         run: docker-compose run --rm app sh -c "python manage.py test"
 
       - name: Linting
-        run:  docker-compose run --rm app sh -c "ruff ."
+        run:  docker-compose run --rm app sh -c "ruff check ."
