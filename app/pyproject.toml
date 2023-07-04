@@ -10,5 +10,5 @@ exclude = [
 ]
 # pytest-django
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "tutova.settings"
+DJANGO_SETTINGS_MODULE = "app.settings"
 python_files = "tests/test_*.py"
