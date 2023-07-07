@@ -11,4 +11,5 @@ exclude = [
 # pytest-django
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "app.settings"
-python_files = "tests/test_*.py"
+testpaths = '*/tests'
+python_files = "test_*.py"
