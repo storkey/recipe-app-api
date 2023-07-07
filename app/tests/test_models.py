@@ -37,3 +37,17 @@ def test_create_default_user(default_user):
     assert_that(user.is_active).is_equal_to(True)
     assert_that(user.is_staff).is_equal_to(False)
 
+
+@pytest.mark.django_db
+def test_create_superuser():
+    """Test: creating a superuser"""
+
+    # Given
+    user = get_user_model().objects.create_superuser(
+        email="test@example.com",
+        password="test123",
+    )
+
+    # Then
+    assert_that(user.is_superuser).is_true()
+    assert_that(user.is_staff).is_true()
