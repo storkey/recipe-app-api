@@ -1,0 +1,14 @@
+# ruff
+[tool.ruff]
+select = ["E", "F", "W"]
+line-length = 88
+exclude = [
+   "migrations",
+    "__pycache__",
+    "manage.py",
+    "settings.py"
+]
+# pytest-django
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "app.settings"
+python_files = "tests/test_*.py"
