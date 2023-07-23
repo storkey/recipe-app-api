@@ -13,9 +13,15 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Ruff
+        uses: chartboost/ruff-action@v1
+
+      - name: Black
+        uses: psf/black@stable
+
       - name: Test
-        run: docker-compose run --rm app sh -c "python manage.py test"
-      - name: Lint
-        run: docker-compose run --rm app sh -c "flake8"
+        run: docker-compose run --rm app sh -c "pytest -vv"
