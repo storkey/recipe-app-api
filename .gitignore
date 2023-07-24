@@ -134,6 +134,9 @@ dmypy.json
 # If you are using PyCharm #
 .idea/
 
+# CMake
+cmake-build-*/
+
 # File-based project format
 *.iws
 
