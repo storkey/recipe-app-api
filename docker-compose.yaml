@@ -32,6 +32,8 @@ services:
       - POSTGRES_DB=devdb
       - POSTGRES_USER=devuser
       - POSTGRES_PASSWORD=P@ssw0rd
+    ports:
+      - "5433:5433"
 
 volumes:
   dev-db-data:
