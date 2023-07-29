@@ -22,7 +22,7 @@ services:
       DB_USER: devuser
       DB_PASS: P@ssw0rd
     depends_on:
-      - recipe_db
+      - db
 
   db:
     image: postgres:alpine
