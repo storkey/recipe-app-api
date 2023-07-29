@@ -12,24 +12,25 @@ services:
       - ./app:/app
     command: >
       sh -c "python manage.py wait_for_db &&
+             python manage.py makemigrations &&
              python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8080"
 
     environment:
-      - DB_HOST=db
-      - DB_NAME=devdb
-      - DB_USER=devuser
-      - DB_PASS=P@ssw0rd
+      DB_HOST: recipe_db
+      DB_NAME: recipe_db
+      DB_USER: devuser
+      DB_PASS: P@ssw0rd
     depends_on:
-      - db
+      - recipe_db
 
-  db:
+  recipe_db:
     image: postgres:13-alpine
-    container_name: db
+    container_name: recipe_db
     volumes:
       - dev-db-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=devdb
+      - POSTGRES_DB=recipe_db
       - POSTGRES_USER=devuser
       - POSTGRES_PASSWORD=P@ssw0rd
     ports:
