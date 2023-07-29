@@ -25,6 +25,7 @@ services:
 
   db:
     image: postgres:13-alpine
+    container_name: db
     volumes:
       - dev-db-data:/var/lib/postgresql/data
     environment:
