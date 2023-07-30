@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     # internal apps
-    "core",
+    "core.apps.CoreConfig",
+    "user.apps.UserConfig"
 ]
 
 MIDDLEWARE = [
