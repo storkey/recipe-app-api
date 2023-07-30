@@ -32,7 +32,7 @@ def test_users_list(admin_user, normal_user):
     admin_user = admin_user
     client = Client()
     client.force_login(admin_user)
-    url = reverse('admin:core_user_changelist')
+    url = reverse("admin:core_user_changelist")
     response = client.get(url)
     assert_that(response.status_code).is_equal_to(status.HTTP_302_FOUND)
     user = get_user_model().objects.all()
