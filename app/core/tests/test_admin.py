@@ -25,12 +25,6 @@ def admin_user():
     return admin_user
 
 
-@pytest.fixture
-def admin_client(admin_user):
-    client = Client()
-    client.force_login(admin_user)
-
-
 @pytest.mark.django_db
 def test_users_list(admin_user, normal_user):
     """Test that users are listed on page."""
@@ -40,8 +34,19 @@ def test_users_list(admin_user, normal_user):
     client.force_login(admin_user)
     url = reverse('admin:core_user_changelist')
     response = client.get(url)
-    user = get_user_model().objects.order_by("id")
     assert_that(response.status_code).is_equal_to(status.HTTP_302_FOUND)
     user = get_user_model().objects.all()
     assert_that(user[0].name).is_equal_to(normal_user.name)
     assert_that(user[0].email).is_equal_to(normal_user.email)
+
+
+@pytest.mark.django_db
+def test_edit_user_page(normal_user, admin_user):
+    """Test that user is listed on page."""
+    normal_user = normal_user
+    admin_user = admin_user
+    client = Client()
+    client.force_login(admin_user)
+    url = reverse("admin:core_user_change", args=[normal_user.id])
+    res = client.get(url)
+    assert_that(res.status_code).is_equal_to(status.HTTP_302_FOUND)
